@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Project Portfolio – Surbhi Gupta</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0d0d0f;
+    --surface: #141417;
+    --card: #1a1a1f;
+    --card-hover: #1f1f26;
+    --border: rgba(255,255,255,0.07);
+    --border-strong: rgba(255,255,255,0.13);
+    --text: #f0ede8;
+    --muted: #888;
+    --faint: #555;
+    --blue: #4A9EFF;
+    --blue-dim: rgba(74,158,255,0.12);
+    --teal: #34D4A0;
+    --teal-dim: rgba(52,212,160,0.12);
+    --amber: #F5A623;
+    --amber-dim: rgba(245,166,35,0.12);
+    --coral: #FF6B6B;
+    --coral-dim: rgba(255,107,107,0.12);
+    --violet: #A78BFA;
+    --violet-dim: rgba(167,139,250,0.12);
+    --rose: #F472B6;
+    --rose-dim: rgba(244,114,182,0.12);
+    --lime: #86EFAC;
+    --lime-dim: rgba(134,239,172,0.12);
+    --serif: 'Playfair Display', Georgia, serif;
+    --sans: 'Inter', system-ui, sans-serif;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: var(--sans);
+    background: var(--bg);
+    color: var(--text);
+    font-size: 15px;
+    line-height: 1.65;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  a { color: inherit; text-decoration: none; }
+
+  /* ─── PAGE WRAP ─── */
+  .page { max-width: 900px; margin: 0 auto; padding: 64px 40px 80px; }
+
+  /* ─── HERO ─── */
+  .hero {
+    margin-bottom: 72px;
+  }
+
+  .hero-eyebrow {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--blue);
+    margin-bottom: 16px;
+  }
+
+  .hero h1 {
+    font-family: var(--serif);
+    font-size: 56px;
+    font-weight: 400;
+    line-height: 1.08;
+    letter-spacing: -0.5px;
+    color: var(--text);
+    margin-bottom: 20px;
+  }
+
+  .hero h1 span {
+    color: var(--muted);
+  }
+
+  .hero-desc {
+    font-size: 16px;
+    color: var(--muted);
+    max-width: 520px;
+    line-height: 1.7;
+    margin-bottom: 28px;
+  }
+
+  .hero-links {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  .hero-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--muted);
+    border: 1px solid var(--border-strong);
+    padding: 7px 16px;
+    border-radius: 6px;
+    transition: color 0.15s, border-color 0.15s;
+  }
+
+  .hero-link:hover { color: var(--text); border-color: rgba(255,255,255,0.3); }
+
+  .hero-link svg { width: 14px; height: 14px; flex-shrink: 0; }
+
+  /* ─── SECTION LABEL ─── */
+  .section-label {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--faint);
+    margin-bottom: 28px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  /* ─── PROJECT CARD ─── */
+  .projects { display: flex; flex-direction: column; gap: 2px; }
+
+  .project {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 32px 36px;
+    transition: background 0.15s, border-color 0.15s;
+    page-break-inside: avoid;
+    break-inside: avoid;
+    margin-bottom: 16px;
+  }
+
+  .project:hover { background: var(--card-hover); border-color: var(--border-strong); }
+
+  .project-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 16px;
+    margin-bottom: 12px;
+  }
+
+  .project-num {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    color: var(--faint);
+    font-variant-numeric: tabular-nums;
+    margin-bottom: 8px;
+  }
+
+  .project-name {
+    font-family: var(--serif);
+    font-size: 26px;
+    font-weight: 400;
+    color: var(--text);
+    line-height: 1.2;
+  }
+
+  .project-badge {
+    font-size: 11px;
+    font-weight: 500;
+    padding: 4px 12px;
+    border-radius: 20px;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  .badge-blue { background: var(--blue-dim); color: var(--blue); }
+  .badge-teal { background: var(--teal-dim); color: var(--teal); }
+  .badge-amber { background: var(--amber-dim); color: var(--amber); }
+  .badge-violet { background: var(--violet-dim); color: var(--violet); }
+  .badge-lime { background: var(--lime-dim); color: var(--lime); }
+  .badge-rose { background: var(--rose-dim); color: var(--rose); }
+
+  .project-summary {
+    font-size: 14.5px;
+    color: #a0a0a0;
+    margin-bottom: 24px;
+    line-height: 1.7;
+    max-width: 700px;
+  }
+
+  /* Accent bar */
+  .project-divider {
+    height: 1px;
+    background: var(--border);
+    margin: 0 -36px 24px;
+  }
+
+  /* Tech stack */
+  .tech-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 24px;
+  }
+
+  .tech {
+    font-size: 12px;
+    font-weight: 500;
+    padding: 4px 11px;
+    border-radius: 5px;
+    border: 1px solid var(--border-strong);
+    color: var(--muted);
+    background: transparent;
+  }
+
+  .tech.blue { border-color: rgba(74,158,255,0.3); color: var(--blue); }
+  .tech.teal { border-color: rgba(52,212,160,0.3); color: var(--teal); }
+  .tech.amber { border-color: rgba(245,166,35,0.3); color: var(--amber); }
+  .tech.violet { border-color: rgba(167,139,250,0.3); color: var(--violet); }
+  .tech.lime { border-color: rgba(134,239,172,0.3); color: var(--lime); }
+  .tech.rose { border-color: rgba(244,114,182,0.3); color: var(--rose); }
+
+  /* Key contributions */
+  .contributions-label {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--faint);
+    margin-bottom: 14px;
+  }
+
+  .contributions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 24px;
+  }
+
+  .contrib {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 13.5px;
+    color: #b0b0b0;
+    line-height: 1.6;
+  }
+
+  .contrib-dot {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    margin-top: 7px;
+  }
+
+  .dot-blue { background: var(--blue); }
+  .dot-teal { background: var(--teal); }
+  .dot-amber { background: var(--amber); }
+
+  /* Impact row */
+  .impact-row {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  .impact-stat {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 10px 16px;
+    text-align: center;
+    min-width: 110px;
+  }
+
+  .impact-number {
+    font-size: 22px;
+    font-weight: 600;
+    line-height: 1;
+    margin-bottom: 3px;
+  }
+
+  .impact-label {
+    font-size: 11px;
+    color: var(--muted);
+    line-height: 1.3;
+  }
+
+  .n-blue { color: var(--blue); }
+  .n-teal { color: var(--teal); }
+  .n-amber { color: var(--amber); }
+  .n-violet { color: var(--violet); }
+  .n-lime { color: var(--lime); }
+  .n-rose { color: var(--rose); }
+
+  .dot-blue { background: var(--blue); }
+  .dot-teal { background: var(--teal); }
+  .dot-amber { background: var(--amber); }
+  .dot-violet { background: var(--violet); }
+  .dot-lime { background: var(--lime); }
+  .dot-rose { background: var(--rose); }
+
+  /* ─── PRINT ─── */
+  @media print {
+    body { background: #0d0d0f !important; font-size: 13px; }
+    .page { padding: 32px 36px 48px; }
+    .hero { margin-bottom: 48px; }
+    .hero h1 { font-size: 42px; }
+    .project { margin-bottom: 12px; padding: 24px 28px; }
+    .contributions { grid-template-columns: 1fr; }
+  }
+
+  @media (max-width: 640px) {
+    .page { padding: 32px 20px 48px; }
+    .hero h1 { font-size: 38px; }
+    .project { padding: 24px 20px; }
+    .project-divider { margin: 0 -20px 20px; }
+    .contributions { grid-template-columns: 1fr; }
+    .project-top { flex-direction: column; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-eyebrow">Project Portfolio</div>
+    <h1>Surbhi Gupta<br><span>ECE · MANIT Bhopal</span></h1>
+    <p class="hero-desc">B.Tech Electronics &amp; Communication Engineering, 2023–2027. Building intelligent systems at the intersection of ML, signal processing, and embedded hardware.</p>
+    <div class="hero-links">
+      <a class="hero-link" href="mailto:2311401160@stu.manit.ac.in">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        2311401160@stu.manit.ac.in
+      </a>
+      <a class="hero-link" href="https://www.linkedin.com/in/surbhi-gupta-716808290/" target="_blank">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+        LinkedIn
+      </a>
+      <a class="hero-link" href="https://github.com/Surbhi0620" target="_blank">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg>
+        GitHub
+      </a>
+    </div>
+  </div>
+
+  <!-- PROJECTS -->
+  <div class="section-label">Featured Projects</div>
+  <div class="projects">
+
+    <!-- PROJECT 1 -->
+    <div class="project">
+      <div class="project-top">
+        <div>
+          <div class="project-num">01</div>
+          <div class="project-name">AI-Based Student Dropout Prediction &amp; Counseling System</div>
+        </div>
+        <div class="project-badge badge-blue">SIH 2025</div>
+      </div>
+
+      <p class="project-summary">
+        A machine learning system that predicts student dropout risk on a scale of 1–10 using attendance, academic performance, and engagement data — providing explainable insights to help mentors intervene early.
+      </p>
+
+      <div class="project-divider"></div>
+
+      <div class="tech-row">
+        <span class="tech blue">Python</span>
+        <span class="tech blue">XGBoost</span>
+        <span class="tech blue">SHAP</span>
+        <span class="tech">NumPy</span>
+        <span class="tech">Matplotlib</span>
+        <span class="tech">Jupyter Notebook</span>
+      </div>
+
+      <div class="contributions-label">Key Contributions</div>
+      <div class="contributions">
+        <div class="contrib">
+          <div class="contrib-dot dot-blue"></div>
+          <span>Built an XGBoost model predicting risk scores (1–10) from multi-source student data including attendance, academics, and engagement metrics.</span>
+        </div>
+        <div class="contrib">
+          <div class="contrib-dot dot-blue"></div>
+          <span>Applied SHAP explainability to visualize the top factors driving each student's dropout risk score — making the model interpretable for non-technical mentors.</span>
+        </div>
+        <div class="contrib">
+          <div class="contrib-dot dot-blue"></div>
+          <span>Translated model outputs into actionable intervention logic, mapping risk levels to specific counseling recommendations.</span>
+        </div>
+        <div class="contrib">
+          <div class="contrib-dot dot-blue"></div>
+          <span>Co-designed the full solution presentation, articulating technical approach, real-world feasibility, and social impact to SIH evaluators.</span>
+        </div>
+      </div>
+
+      <div class="impact-row">
+        <div class="impact-stat">
+          <div class="impact-number n-blue">1–10</div>
+          <div class="impact-label">Risk score range</div>
+        </div>
+        <div class="impact-stat">
+          <div class="impact-number n-blue">3</div>
+          <div class="impact-label">Data sources integrated</div>
+        </div>
+        <div class="impact-stat">
+          <div class="impact-number n-blue">SHAP</div>
+          <div class="impact-label">Explainable AI method</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PROJECT 2 -->
+    <div class="project">
+      <div class="project-top">
+        <div>
+          <div class="project-num">02</div>
+          <div class="project-name">Speech &amp; Chewing Sound Classification</div>
+        </div>
+        <div class="project-badge badge-teal">Mar 2025 – Sep 2025</div>
+      </div>
+
+      <p class="project-summary">
+        An audio classification system that distinguishes speech and chewing sounds using extracted acoustic features, achieving high accuracy on a large dataset via machine learning and systematic hyperparameter tuning.
+      </p>
+
+      <div class="project-divider"></div>
+
+      <div class="tech-row">
+        <span class="tech teal">Python</span>
+        <span class="tech teal">XGBoost</span>
+        <span class="tech teal">Librosa</span>
+        <span class="tech">Jupyter Notebook</span>
+        <span class="tech">SciPy</span>
+        <span class="tech">Matplotlib</span>
+      </div>
+
+      <div class="contributions-label">Key Contributions</div>
+      <div class="contributions">
+        <div class="contrib">
+          <div class="contrib-dot dot-teal"></div>
+          <span>Processed and classified 8,000+ audio samples using Librosa-extracted features: amplitude, energy, frequency peaks, and spectral characteristics.</span>
+        </div>
+        <div class="contrib">
+          <div class="contrib-dot dot-teal"></div>
+          <span>Designed a windowed segmentation strategy to accurately capture transient audio events within continuous audio streams.</span>
+        </div>
+        <div class="contrib">
+          <div class="contrib-dot dot-teal"></div>
+          <span>Tuned XGBoost hyperparameters systematically to push model accuracy above 85%, validated via confusion matrix and learning curve analysis.</span>
+        </div>
+        <div class="contrib">
+          <div class="contrib-dot dot-teal"></div>
+          <span>Analyzed model performance across sound types to identify and resolve class-specific misclassification patterns.</span>
+        </div>
+      </div>
+
+      <div class="impact-row">
+        <div class="impact-stat">
+          <div class="impact-number n-teal">8,000+</div>
+          <div class="impact-label">Audio samples</div>
+        </div>
+        <div class="impact-stat">
+          <div class="impact-number n-teal">85%+</div>
+          <div class="impact-label">Classification accuracy</div>
+        </div>
+        <div class="impact-stat">
+          <div class="impact-number n-teal">4</div>
+          <div class="impact-label">Acoustic features used</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PROJECT 3 -->
+    <div class="project">
+      <div class="project-top">
+        <div>
+          <div class="project-num">03</div>
+          <div class="project-name">Smart Greenhouse Automation</div>
+        </div>
+        <div class="project-badge badge-amber">Feb 2024</div>
+      </div>
+
+      <p class="project-summary">
+        A microcontroller-based embedded system that automates greenhouse climate control using real-time sensor data — eliminating manual monitoring and significantly reducing response time.
+      </p>
+
+      <div class="project-divider"></div>
+
+      <div class="tech-row">
+        <span class="tech amber">Arduino</span>
+        <span class="tech amber">C++</span>
+        <span class="tech">Soil Moisture Sensor</span>
+        <span class="tech">Temperature Sensor</span>
+        <span class="tech">Embedded C</span>
+      </div>
+
+      <div class="contributions-label">Key Contributions</div>
+      <div class="contributions">
+        <div class="contrib">
+          <div class="contrib-dot dot-amber"></div>
+          <span>Integrated soil moisture and temperature sensors with an Arduino microcontroller to trigger automated watering and fan control in real time.</span>
+        </div>
+        <div class="contrib">
+          <div class="contrib-dot dot-amber"></div>
+          <span>Developed threshold-based control logic in C++ that eliminates the need for manual intervention in routine climate adjustment tasks.</span>
+        </div>
+        <div class="contrib">
+          <div class="contrib-dot dot-amber"></div>
+          <span>Built real-time LED signaling and delay-based alert system to surface system status and sensor warnings at a glance.</span>
+        </div>
+        <div class="contrib">
+          <div class="contrib-dot dot-amber"></div>
+          <span>Validated the full system across varied environmental conditions to ensure reliable sensor-to-actuator response timing.</span>
+        </div>
+      </div>
+
+      <div class="impact-row">
+        <div class="impact-stat">
+          <div class="impact-number n-amber">80%</div>
+          <div class="impact-label">Reduction in manual intervention</div>
+        </div>
+        <div class="impact-stat">
+          <div class="impact-number n-amber">60%</div>
+          <div class="impact-label">Improved response time</div>
+        </div>
+        <div class="impact-stat">
+          <div class="impact-number n-amber">2</div>
+          <div class="impact-label">Sensor types integrated</div>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- PROJECT 4 -->
+    <div class="project">
+      <div class="project-top">
+        <div>
+          <div class="project-num">04</div>
+          <div class="project-name">Customer Churn Prediction</div>
+        </div>
+        <div class="project-badge badge-violet">Apr – Jun 2026</div>
+      </div>
+
+      <p class="project-summary">
+        An end-to-end churn prediction pipeline on a restaurant customer dataset — from SQL-based feature aggregation through ML modelling and SHAP explainability, to Excel-based reporting that surfaces high-risk customer cohorts for business action.
+      </p>
+
+      <div class="project-divider"></div>
+
+      <div class="tech-row">
+        <span class="tech violet">Python</span>
+        <span class="tech violet">SQL</span>
+        <span class="tech violet">PostgreSQL</span>
+        <span class="tech violet">XGBoost</span>
+        <span class="tech violet">SHAP</span>
+        <span class="tech">Scikit-learn</span>
+        <span class="tech">Excel</span>
+        <span class="tech">Pandas</span>
+      </div>
+
+      <div class="contributions-label">Key Contributions</div>
+      <div class="contributions">
+        <div class="contrib">
+          <div class="contrib-dot dot-violet"></div>
+          <span>Loaded restaurant customer data into PostgreSQL and wrote window functions to compute churn rates by visit frequency band and loyalty program membership; engineered SpendPerVisit and TotalRating as derived analytical features.</span>
+        </div>
+        <div class="contrib">
+          <div class="contrib-dot dot-violet"></div>
+          <span>Built an XGBoost + Logistic Regression classification pipeline on features spanning demographics (Age, Income, Gender), behaviour (VisitFrequency, AverageSpend, GroupSize), and satisfaction ratings (Service, Food, Ambiance).</span>
+        </div>
+        <div class="contrib">
+          <div class="contrib-dot dot-violet"></div>
+          <span>Applied SHAP explainability to identify the top churn drivers — surfacing that WaitTime, LoyaltyProgramMember status, and ServiceRating were the strongest predictors of customer churn.</span>
+        </div>
+        <div class="contrib">
+          <div class="contrib-dot dot-violet"></div>
+          <span>Exported prediction scores to Excel and built a pivot table (churn rate by DiningOccasion × MealType) with conditional formatting to highlight the highest-risk customer cohorts.</span>
+        </div>
+      </div>
+
+      <div class="impact-row">
+        <div class="impact-stat">
+          <div class="impact-number n-violet">22</div>
+          <div class="impact-label">Features engineered</div>
+        </div>
+        <div class="impact-stat">
+          <div class="impact-number n-violet">3</div>
+          <div class="impact-label">Top churn drivers (SHAP)</div>
+        </div>
+        <div class="impact-stat">
+          <div class="impact-number n-violet">XGBoost</div>
+          <div class="impact-label">Best performing model</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PROJECT 5 -->
+    <div class="project">
+      <div class="project-top">
+        <div>
+          <div class="project-num">05</div>
+          <div class="project-name">HR Attrition Analysis</div>
+        </div>
+        <div class="project-badge badge-lime">Apr – Jun 2026</div>
+      </div>
+
+      <p class="project-summary">
+        A consulting-framed people analytics project on the IBM HR dataset — identifying at-risk employee segments via SQL and Python, visualised in a Power BI dashboard built for HR leadership decision-making.
+      </p>
+
+      <div class="project-divider"></div>
+
+      <div class="tech-row">
+        <span class="tech lime">SQL</span>
+        <span class="tech lime">SQLite</span>
+        <span class="tech lime">Python</span>
+        <span class="tech lime">Power BI</span>
+        <span class="tech">Scikit-learn</span>
+        <span class="tech">Pandas</span>
+        <span class="tech">DAX</span>
+      </div>
+
+      <div class="contributions-label">Key Contributions</div>
+      <div class="contributions">
+        <div class="contrib">
+          <div class="contrib-dot dot-lime"></div>
+          <span>Stored IBM HR data in SQLite and wrote CTEs and subqueries to isolate departments with attrition above the company average and compute attrition rates by salary band.</span>
+        </div>
+        <div class="contrib">
+          <div class="contrib-dot dot-lime"></div>
+          <span>Conducted EDA in Python across overtime, job role, tenure, and satisfaction dimensions; built a logistic regression model to generate a "flight risk" score per employee.</span>
+        </div>
+        <div class="contrib">
+          <div class="contrib-dot dot-lime"></div>
+          <span>Delivered a 1-page Power BI HR dashboard with a DAX-computed attrition % KPI card, department-level bar chart, and job-level slicer — designed for non-technical HR stakeholders.</span>
+        </div>
+        <div class="contrib">
+          <div class="contrib-dot dot-lime"></div>
+          <span>Packaged findings as a 2-slide consulting-style executive summary with root causes and targeted retention recommendations by department.</span>
+        </div>
+      </div>
+
+      <div class="impact-row">
+        <div class="impact-stat">
+          <div class="impact-number n-lime">1-page</div>
+          <div class="impact-label">Power BI dashboard</div>
+        </div>
+        <div class="impact-stat">
+          <div class="impact-number n-lime">Flight Risk</div>
+          <div class="impact-label">Employee score model</div>
+        </div>
+        <div class="impact-stat">
+          <div class="impact-number n-lime">DAX</div>
+          <div class="impact-label">Attrition % measure</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PROJECT 6 -->
+    <div class="project">
+      <div class="project-top">
+        <div>
+          <div class="project-num">06</div>
+          <div class="project-name">Customer Segmentation — RFM &amp; K-Means</div>
+        </div>
+        <div class="project-badge badge-rose">Apr – Jun 2026</div>
+      </div>
+
+      <p class="project-summary">
+        A full-stack customer analytics pipeline on the UCI Online Retail II dataset — RFM scores computed in SQL, clustered in Python via K-Means, validated in Excel, and presented as a Power BI segment dashboard with business campaign recommendations.
+      </p>
+
+      <div class="project-divider"></div>
+
+      <div class="tech-row">
+        <span class="tech rose">Python</span>
+        <span class="tech rose">SQL</span>
+        <span class="tech rose">PostgreSQL</span>
+        <span class="tech rose">Scikit-learn</span>
+        <span class="tech rose">Power BI</span>
+        <span class="tech">Excel</span>
+        <span class="tech">Pandas</span>
+        <span class="tech">DAX</span>
+      </div>
+
+      <div class="contributions-label">Key Contributions</div>
+      <div class="contributions">
+        <div class="contrib">
+          <div class="contrib-dot dot-rose"></div>
+          <span>Computed RFM scores directly in SQL — MAX(InvoiceDate) for recency, COUNT(Invoice) for frequency, SUM(Revenue) for monetary value — and persisted the scored table back to the database.</span>
+        </div>
+        <div class="contrib">
+          <div class="contrib-dot dot-rose"></div>
+          <span>Read SQL output into Pandas and applied K-Means clustering on scaled RFM features; used the elbow method and silhouette scores to determine the optimal number of segments.</span>
+        </div>
+        <div class="contrib">
+          <div class="contrib-dot dot-rose"></div>
+          <span>Labelled clusters as Champions, At-Risk, Hibernating, and New Customers; exported assignments to Excel with a pivot summarising average RFM per segment for stakeholder validation.</span>
+        </div>
+        <div class="contrib">
+          <div class="contrib-dot dot-rose"></div>
+          <span>Built a Power BI report with a donut chart of segment distribution and a recommendation table mapping each cluster to a targeted CRM campaign action.</span>
+        </div>
+      </div>
+
+      <div class="impact-row">
+        <div class="impact-stat">
+          <div class="impact-number n-rose">4</div>
+          <div class="impact-label">Customer segments</div>
+        </div>
+        <div class="impact-stat">
+          <div class="impact-number n-rose">6</div>
+          <div class="impact-label">Tools in one pipeline</div>
+        </div>
+        <div class="impact-stat">
+          <div class="impact-number n-rose">RFM</div>
+          <div class="impact-label">Scoring method (SQL-native)</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+</body>
+</html>
